@@ -1,0 +1,54 @@
+<template id="example">
+	<style>
+		.example {
+			padding: var(--rhythm);
+			border: solid 1px var(--font-color);
+			border-radius: 5px;
+			background: var(--example-bg);
+		}
+
+		.example__body {
+			margin-top: var(--rhythm-double);
+		}
+		.example__body p {
+			margin-top: 0;
+		}
+		.example__body-title:first-of-type {
+			margin-top: var(--rhythm-double);
+		}
+
+		.example__body-title {
+			margin-top: var(--rhythm);
+			margin-bottom: 0;
+			padding: 0;
+			font-weight: bold;
+		}
+
+		.example__title {
+			font-size: var(--rhythm-double);
+			font-weight: bold;
+			font-style: italic;
+			padding: 0;
+			margin-top: 0;
+		}
+	</style>
+	<div class="example column align-items-start">
+		<h2 class="example__title"><slot name="title">"Orra kapi kodinga s'il vou play"</slot></h2>
+		<div class="example__body">
+			<h4 class="example__body-title">
+				translation
+			</h4>
+			<p><slot name="translation">asdad</slot></p>
+
+			<h4 class="example__body-title">
+				tense
+			</h4>
+			<p><slot name="tense">asd</slot></p>
+
+			<h4 class="example__body-title">
+				tone
+			</h4>
+			<p><slot name="tone">asd</slot></p>
+		</div>
+	</div>
+</template>
