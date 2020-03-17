@@ -1,0 +1,43 @@
+<html lang="en">
+	<%- include('../partials/head') %>
+	<body>
+		<%- include('../templates/example') %> <%- include('../partials/nav') %>
+		<div class="container">
+			<div class="flashcard">
+				<div class="flashcard__title column">
+					<h2>Onne</h2>
+					<h4 class="difficulty center">easy</h4>
+				</div>
+				<div class="flashcard__body column">
+					<details>
+						<summary>definition</summary>
+						<p class="flashcard__body-definition">The number one</p>
+					</details>
+					<details>
+						<summary>examples</summary>
+						<div class="grid examples">
+							<flashcard-example>
+								<p slot="title">"enake orra dosa kodinga"</p>
+								<p slot="tone">respectful</p>
+								<p slot="tense">present tense</p>
+							</flashcard-example>
+							<flashcard-example>
+								<p slot="title">"enake orra dosa kode"</p>
+								<p slot="tone">informal</p>
+								<p slot="tense">present tense</p>
+							</flashcard-example>
+						</div>
+					</details>
+				</div>
+			</div>
+			<div class="buttons">
+				<button class="button next-button">
+					<img src="/static/assets/img/icons/next-btn.svg" />
+				</button>
+				<button class="button prev-button">
+					<img src="/static/assets/img/icons/prev-btn.svg" />
+				</button>
+			</div>
+		</div>
+	</body>
+</html>
