@@ -77,3 +77,19 @@
 .align-content-sa {
 	align-items: space-around;
 }
+
+.align-self-start {
+	align-self: flex-start;
+}
+.align-self-end {
+	align-self: flex-end;
+}
+.align-self-center {
+	align-self: center;
+}
+.justify-self-start {
+	justify-self: flex-start;
+}
+.justify-self-end {
+	justify-self: flex-end;
+}
