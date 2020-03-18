@@ -57,6 +57,17 @@ nav {
 	width: 100%;
 }
 
+.ta-center {
+	text-align: center;
+}
+
+.ta-left {
+	text-align: left;
+}
+.ta-right {
+	text-align: right;
+}
+
 .navbar {
 	height: var(--nav-height);
 	padding: 0 2rem;
@@ -112,8 +123,10 @@ nav {
 }
 
 .flashcard {
+	position: relative;
 	width: 70%;
-	margin: calc(var(--rhythm) * 2) auto 0;
+	height: 100vh;
+	margin: 0 auto;
 }
 
 /* .flashcard * {
@@ -121,7 +134,7 @@ nav {
 } */
 
 .flashcard__body {
-	margin-top: calc(var(--rhythm) * 2.5);
+	margin-top: calc(var(--rhythm) * 3.5);
 }
 
 .flashcard__body-definition {
@@ -130,7 +143,7 @@ nav {
 }
 
 h2 {
-	font-size: calc(var(--rhythm) * 5);
+	font-size: calc(var(--rhythm) * 8);
 	font-weight: bold;
 }
 
@@ -139,6 +152,7 @@ details {
 	width: fit-content;
 	position: relative;
 	transition: transform ease 200ms;
+	z-index: 10;
 }
 
 details > summary::-webkit-details-marker {
@@ -146,13 +160,14 @@ details > summary::-webkit-details-marker {
 }
 
 summary {
-	font-size: calc(var(--rhythm) * 2.5);
-	font-weight: 500;
+	font-size: var(--rhythm-double);
+	font-weight: 400;
 	outline: none;
 	display: flex;
 	width: fit-content;
 	list-style: none;
 	position: relative;
+	color: var(--font-color);
 }
 
 summary::before {
@@ -176,7 +191,7 @@ details[open] summary:before {
 	transform: rotate(180deg);
 }
 
-.difficulty {
+.flashcard__difficulty {
 	background: var(--font-color);
 	color: var(--bg);
 	padding: 0 0.4rem;
@@ -211,6 +226,52 @@ svg {
 	font-size: 18px;
 	display: grid;
 	margin-top: var(--rhythm);
-	grid-template-columns: 1fr 1fr;
+	grid-template-columns: repeat(auto-fit, 1fr);
 	grid-gap: var(--rhythm);
+	width: 100%;
+}
+
+.buttons {
+	position: absolute;
+	margin-top: calc(var(--rhythm) * 4);
+	width: 90vw;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.button {
+	--bg: transparent;
+	background: var(--bg);
+	border: none;
+	outline: none;
+}
+
+.button--bg-primary {
+	background-color: var(--font-color);
+	color: white;
+}
+
+.button__icon {
+	opacity: 0.75;
+}
+
+.button__icon {
+	stroke: var(--font-color);
+	max-width: 5rem;
+	width: 100%;
+}
+
+.button__icon:active {
+	opacity: 1;
+}
+
+label {
+	margin-bottom: 1em;
+}
+
+select:not(:first-of-type) {
+	appearance: button;
+	padding: 1em;
+	border: none;
 }
