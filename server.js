@@ -12,7 +12,6 @@ app.set('view engine', 'ejs')
 app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')))
 app.use(express.json())
-app.use(cors())
 
 // static pages
 app.get('/', (req, res) => res.render('pages/index'))
