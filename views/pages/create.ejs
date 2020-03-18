@@ -1,69 +1,90 @@
 <html lang="en">
 	<%- include('../partials/head') %>
 	<body>
-		<template id="example">
-			<label>
-				example
-				<input name="example" type="text" />
-			</label>
-			<label>
-				Translation
-				<input type="text" name="translation" />
-			</label>
-			<select name="tense">
-				<option>past</option>
-				<option>present</option>
-				<option>future</option>
-			</select>
-			<select name="tone">
-				<option value="neutral">neutral</option>
-				<option value="neutral">neutral</option>
-			</select>
+		<template id="form-example">
+			<div class="form-example flex column ta-left">
+				<label>
+					Example
+					<input name="example" type="text" />
+				</label>
+				<label>
+					Translation
+					<input type="text" name="translation" />
+				</label>
+				<label>
+					Tense
+					<select name="tense">
+						<option>past</option>
+						<option>present</option>
+						<option>future</option>
+					</select>
+				</label>
+				<label>
+					Tone
+					<select name="tone">
+						<option value="neutral">neutral</option>
+						<option value="formal">formal</option>
+						<option value="informal">informal</option>
+						<option value="polite">polite</option>
+					</select>
+				</label>
+				<div>
+					remove
+				</div>
+			</div>
 		</template>
 		<%- include('../partials/nav') %>
 		<div class="container flex column align-items-center justify-content-center">
 			<h1>Create</h1>
-			<form id="form" class="column">
-				<label class="flex column">
-					Word / Sentence
-					<input type="text" id="word" />
-				</label>
-				<label class="flex column">
-					Tamil Text
-					<input type="text" id="tamil-text" />
-				</label>
-				<label class="flex column">
-					Definition
-					<input type="text" id="definition" />
-				</label>
-				<label class="flex column">
-					Tags
-					<input type="text" id="tags" />
-				</label>
-				<div class="flex">
+			<form id="form" class="flex column">
+				<div id="general-form-data">
 					<label class="flex column">
-						Difficulty
-						<select id="difficulty">
-							<option value="beginner">Beginner</option>
-							<option value="intermediate">Intermediate</option>
-							<option value="advanced">Advanced</option>
-						</select>
+						Word / Sentence
+						<input type="text"  name="value" id="word" />
 					</label>
 					<label class="flex column">
-						Category
-						<select id="category">
-							<option value="number">number</option>
-							<option value="sentence">sentence</option>
-							<option value="word">word</option>
-							<option value="food">food</option>
-							<option value="idioms">idioms</option>
-						</select>
+						Tamil Text
+						<input type="text" id="tamil-text" name="tamilText"/>
 					</label>
+					<label class="flex column">
+						Definition
+						<input type="text" id="definition" name="definition" />
+					</label>
+					<label class="flex column">
+						Tags
+						<input type="text" id="tags" name="tags"/>
+					</label>
+					<div class="flex">
+						<label class="flex column">
+							Difficulty
+							<select id="difficulty" name="difficulty">
+								<option value="beginner">Beginner</option>
+								<option value="intermediate">Intermediate</option>
+								<option value="advanced">Advanced</option>
+							</select>
+						</label>
+						<label class="flex column">
+							Category
+							<select id="category" name="category">
+								<option value="number">number</option>
+								<option value="food">food</option>
+								<option value="place">place</option>
+								<option value="thing">thing</option>
+								<option value="animal">animal</option>
+								<option value="idiom">idiom</option>
+								<option value="idiom">verb</option>
+								<option value="idiom">adjective</option>
+							</select>
+						</label>
+					</div>
 				</div>
-				<div id="examples"></div>
+				<div id="examples" class=" flex column">
+					<form-example data-index="1"></form-example>
+					<form-example data-index="2"></form-example>
+				</div>
+				<input id="submit" class="button--bg-primary button" type="submit" value="Submit">
 			</form>
-			<button id="add"></button id="add">
+			<button id="add" class="align-self-center">Add</button id="add">
 		</div>
-		<script src="/static/assets/js/form.js"></script>
 	</body>
 </html>
