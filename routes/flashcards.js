@@ -7,8 +7,6 @@ const writeFileAsync = promisify(fs.writeFile)
 
 router.post('/', async (req, res) => {
 	const { word, definition } = req.body
-	console.log(req.body)
-
 	const entry = req.body
 
 	try {
@@ -16,8 +14,9 @@ router.post('/', async (req, res) => {
 		const json = JSON.parse(data)
 		const newData = { ...entry.data, tags: entry.data.tags.split(',') }
 
-		json.data.push(addTags)
-		const result = await writeFileAsync('./db.json', newData)
+		json.data.push(newData)
+
+		const result = await writeFileAsync('./db.json', JSON.stringify(json))
 		res.json({ message: 'success', flashcards: newData })
 	} catch (err) {
 		console.log(err)
