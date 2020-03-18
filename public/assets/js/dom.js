@@ -28,8 +28,9 @@ function getCardData(flashcards, index) {
 // update dom
 
 function updateFlashcard(flashcards, index) {
-	const data = getCardData(flashcards, index)
+	if (!title) return null
 
+	const data = getCardData(flashcards, index)
 	if (!!data) {
 		title.textContent = data.value
 		difficulty.textContent = data.difficulty
