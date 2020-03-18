@@ -241,15 +241,14 @@ svg {
 }
 
 .button {
-	--bg: transparent;
-	background: var(--bg);
+	background: none;
 	border: none;
 	outline: none;
 }
 
 .button--bg-primary {
 	background-color: var(--font-color);
-	color: white;
+	color: var(--bg);
 }
 
 .button__icon {
