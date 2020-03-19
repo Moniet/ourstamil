@@ -22,7 +22,6 @@ router.post('/', async (req, res) => {
 		const json = JSON.parse(data)
 		const newData = {
 			...entry.data,
-			tags: entry.data.tags.split(','),
 			createdAt: new Date()
 		}
 
