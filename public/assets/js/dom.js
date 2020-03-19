@@ -81,8 +81,9 @@ async function init() {
 		if (action === 'end') count = flashcards.length - 1
 		updateFlashcard(flashcards.data, count)
 	}
-	const container = document.querySelector('.flashcard')
+	const container = document.querySelector('.container')
 	const hammer = new Hammer(container)
+	const tracker = new Hammer(title)
 
 	hammer.on('swipeleft swiperight', ev => {
 		if (ev.type === 'swipeleft') {
@@ -97,7 +98,7 @@ async function init() {
 		}
 	})
 
-	hammer.on('panleft panright pancancel panend', ev => {
+	tracker.on('panleft panright pancancel panend panup pandown', ev => {
 		if (ev.type === 'panleft') {
 			container.style.transform = `translate(-${ev.distance < 0 ? 0 : ev.distance / 5}px)`
 		}
