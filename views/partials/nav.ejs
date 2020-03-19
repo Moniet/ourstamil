@@ -1,25 +1,25 @@
 <nav aria-label="Main Navigation">
 	<div class="navbar flex justify-content-sb align-items-center">
-		<ul class="navlist flex">
+		<ul class="navlist flex justify-content-sb align-items-center">
 			<li class="navlist__item"><a href="/" class="navlist__item__link">Home</a></li>
 			<li class="navlist__item">
-				<a href="/create" class="navlist__item__link">Create</a>
+				<a href="/create" class="navlist__item__link create-link">Create</a>
 			</li>
+			<li class="navlist__item"><a href="/login" class="navlist__item__link">Login</a></li>
 		</ul>
-		<button class="theme-button">
-			<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44">
-				<g transform="translate(-1814 -24)">
-					<g transform="translate(1814 24)" fill="none" stroke="#000" stroke-width="4">
-						<!-- <circle cx="22" cy="22" r="22" class="theme-button__circle" /> -->
-						<circle cx="22" cy="22" r="20" fill="none" class="theme-button__circle" />
-					</g>
-					<path
-						stroke="none"
-						d="M41.891,0A15.391,15.391,0,0,0,26.5,15.391c0,8.5,6.633,15.169,15.391,15.391Z"
-						transform="translate(1795.068 30.487)"
+
+		<div>
+			<button class="theme-button icon">
+				<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+					<circle
+						cx="256"
+						cy="256"
+						r="208"
+						style="fill:none;stroke-linejoin:round;stroke-width:32px"
 					/>
-				</g>
-			</svg>
-		</button>
+					<path d="M256,464C141.12,464,48,370.88,48,256S141.12,48,256,48Z" />
+				</svg>
+			</button>
+		</div>
 	</div>
 </nav>
