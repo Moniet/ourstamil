@@ -1,0 +1,65 @@
+{
+	"data": [
+		{
+			"type": "word",
+			"definition": "To Forget",
+			"value": "Marindata",
+			"tags": [],
+			"difficulty": "beginner",
+			"tamilText": "",
+			"examples": [
+				{
+					"tense": "Present Tense",
+					"example": "Na marindita",
+					"translation": "I forgot",
+					"tone": "Neutral"
+				},
+				{
+					"tense": "Present Tense",
+					"example": "Ne marinditiya",
+					"translation": "you forgot",
+					"tone": "Neutral"
+				}
+			]
+		},
+		{
+			"type": "number",
+			"definition": "The Number One",
+			"value": "Orra",
+			"tags": [],
+			"difficulty": "beginner",
+			"tamilText": "",
+			"examples": [
+				{
+					"tense": "Present Tense",
+					"example": "enake orra dosa kodinga",
+					"translation": "can i have a dosa?",
+					"tone": "polite"
+				},
+				{
+					"tense": "Present Tense",
+					"example": "enake orra dosa kode",
+					"translation": "give me a dosa",
+					"tone": "informal"
+				}
+			]
+		},
+		{
+			"category": "idiom",
+			"definition": "Welcome",
+			"value": "Vanakam",
+			"tags": ["greeting", " polite", " "],
+			"difficulty": "beginner",
+			"tamilText": "",
+			"examples": [
+				{
+					"example": "Vanakum, okaringa",
+					"translation": "Welcome, sit down",
+					"tense": "present",
+					"tone": "polite"
+				}
+			],
+			"createdAt": "2020-03-19T09:57:22.744Z"
+		}
+	]
+}
