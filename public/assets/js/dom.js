@@ -99,14 +99,14 @@ async function init() {
 
 	hammer.on('panleft panright pancancel panend', ev => {
 		if (ev.type === 'panleft') {
-			contai.style.transform = `translate(-${ev.distance < 0 ? 0 : ev.distance / 5}px)`
+			container.style.transform = `translate(-${ev.distance < 0 ? 0 : ev.distance / 5}px)`
 		}
 		if (ev.type === 'panright') {
-			contai.style.transform = `translate(${ev.distance < 0 ? 0 : ev.distance / 5}px)`
+			container.style.transform = `translate(${ev.distance < 0 ? 0 : ev.distance / 5}px)`
 		}
 
 		if (ev.type === 'panend') {
-			contai.style.transform = `translate(0)`
+			container.style.transform = `translate(0)`
 		}
 	})
 }
