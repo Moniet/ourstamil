@@ -48,23 +48,10 @@ let formData = {
 	category: 'word',
 	definition: '',
 	value: '',
-	tags: [],
+	tags: '',
 	difficulty: 'beginner',
 	tamilText: '',
-	examples: [
-		{
-			tense: 'Present Tense',
-			example: 'Na marindita',
-			translation: 'I forgot',
-			tone: 'Neutral'
-		},
-		{
-			tense: 'Present Tense',
-			example: 'Ne marinditiya',
-			translation: 'I forgot',
-			tone: 'Neutral'
-		}
-	]
+	examples: []
 }
 
 function updateFormData() {
@@ -91,7 +78,9 @@ async function handleSubmit(e) {
 		examples: Object.values(formData.examples)
 	})
 
-	postFlashcard({ data })
+	await postFlashcard({ data })
+
+	const inputs = a
 }
 
 document.addEventListener('DOMContentLoaded', () => {
