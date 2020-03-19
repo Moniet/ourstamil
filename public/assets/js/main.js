@@ -1,4 +1,6 @@
+import '../css/style.css'
+
 import './scripts.js'
-import './form.js'
-import './example-template.js'
 import './dom.js'
+import './login-form.js'
+import './example-template.js'
