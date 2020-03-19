@@ -16,6 +16,7 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')))
+// app.use('/favicon.ico')
 
 // middleware
 app.use(express.json())
@@ -35,4 +36,4 @@ app.get('/login', (req, res) => res.render('pages/login'))
 app.use('/flashcards', flashcards)
 app.use('/auth', auth)
 
-app.listen(port, console.log('listening at ' + port))
+app.listen(process.env.PORT || port, () => console.log('listening at ' + port))
