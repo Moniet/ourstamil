@@ -2,20 +2,20 @@
 	<%- include('../partials/head') %>
 	<body>
 		<%- include('../templates/example') %> <%- include('../partials/nav') %>
-		<div class="container">
-			<div class="flashcard flex column align-items-start">
-				<div class="column align-self-center">
-					<h2 class="flashcard__title">Onne</h2>
+		<div class="container flex column justify-content-center">
+			<div class="flashcard flex column">
+				<div id="flashcard-header" class="column align-self-center ml-2 mr-2">
+					<h1 class="flashcard__title">Onne</h1>
 					<h4 class="flashcard__difficulty center">easy</h4>
 				</div>
-				<div class="flashcard__body column">
-					<details>
-						<summary>definition</summary>
-						<p class="flashcard__body-definition">The number one</p>
-					</details>
-					<details>
-						<summary>examples</summary>
-						<div class="grid examples">
+				<div class="flashcard__body column hide">
+					<div class="details">
+						<h2 class="details__title">definition</h2>
+						<p class="details__definition">The number one</p>
+					</div>
+					<div class="detail mt-3">
+						<h2 class="details__title">examples</h2>
+						<div class="examples">
 							<flashcard-example>
 								<p slot="title">"enake orra dosa kodinga"</p>
 								<p slot="tone">respectful</p>
@@ -27,7 +27,7 @@
 								<p slot="tense">present tense</p>
 							</flashcard-example>
 						</div>
-					</details>
+					</div>
 				</div>
 			</div>
 			<div class="buttons flex justify-content-sb">
