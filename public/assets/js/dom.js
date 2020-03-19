@@ -1,10 +1,13 @@
+import Hammer from './hammer'
+
 const baseUrl = 'http://localhost:3002'
 
 // flashcard elements
 const title = document.querySelector('.flashcard__title')
 const difficulty = document.querySelector('.flashcard__difficulty')
-const definition = document.querySelector('.flashcard__body-definition')
+const definition = document.querySelector('.details__definition')
 const examples = document.querySelector('.examples')
+const header = document.querySelector('#flashcard-header')
 
 // controls
 const nextBtn = document.querySelector('.next-button')
@@ -20,17 +23,12 @@ async function loadFlashcards() {
 	return null
 }
 
-// get next / prev card
-function getCardData(flashcards, index) {
-	return flashcards[index]
-}
-
-// update dom
-
 function updateFlashcard(flashcards, index) {
 	if (!title) return null
+	console.log('updating')
 
-	const data = getCardData(flashcards, index)
+	const data = flashcards[index]
+
 	if (!!data) {
 		title.textContent = data.value
 		difficulty.textContent = data.difficulty
@@ -61,18 +59,16 @@ function updateFlashcard(flashcards, index) {
 
 			examples.appendChild(container)
 		})
-
-		return null
 	}
-}
-
-function error() {
-	alert('end of the line bech!')
 }
 
 async function init() {
 	const flashcards = await loadFlashcards()
-	updateFlashcard(flashcards.data, 0)
+	flashcards && updateFlashcard(flashcards.data, 0)
+
+	title.addEventListener('click', () => {
+		document.querySelector('.flashcard__body').classList.toggle('hide')
+	})
 
 	nextBtn.addEventListener('click', () =>
 		updateFlashcard(flashcards.data, count + 1 < flashcards.data.length ? ++count : error())
@@ -80,6 +76,40 @@ async function init() {
 	prevBtn.addEventListener('click', () =>
 		updateFlashcard(flashcards.data, count - 1 >= 0 ? --count : error())
 	)
+
+	function error(action) {
+		if (action === 'start') count = 0
+		if (action === 'end') count = flashcards.length - 1
+		updateFlashcard(flashcards.data, count)
+	}
+	const container = document.querySelector('.flashcard')
+	const hammer = new Hammer(container)
+
+	hammer.on('swipeleft swiperight', ev => {
+		if (ev.type === 'swipeleft') {
+			updateFlashcard(
+				flashcards.data,
+				count + 1 < flashcards.data.length ? ++count : error('start')
+			)
+		}
+
+		if (ev.type === 'swiperight') {
+			updateFlashcard(flashcards.data, count - 1 >= 0 ? --count : error('end'))
+		}
+	})
+
+	hammer.on('panleft panright pancancel panend', ev => {
+		if (ev.type === 'panleft') {
+			container.style.transform = `translate(-${ev.distance < 0 ? 0 : ev.distance / 5}px)`
+		}
+		if (ev.type === 'panright') {
+			container.style.transform = `translate(${ev.distance < 0 ? 0 : ev.distance / 5}px)`
+		}
+
+		if (ev.type === 'panend') {
+			container.style.transform = `translate(0)`
+		}
+	})
 }
 
 init()

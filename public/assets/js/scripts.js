@@ -12,10 +12,17 @@ function changeTheme() {
 	}
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
+	body.style.opacity = 1
 	const theme = localStorage.getItem('theme')
+
 	if (theme === 'dark') body.setAttribute('data-theme', 'dark')
 	themeButton.addEventListener('click', changeTheme)
 
-	body.style.opacity = 1
+	const res = await fetch('http://localhost:3002/auth/loggedIn', {
+		method: 'GET',
+		credentials: 'include'
+	})
+
+	if (res.status === 200) document.querySelector('.create-link').style.display = 'block'
 })
