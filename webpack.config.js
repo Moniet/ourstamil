@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-	mode: 'development',
+	mode: 'production',
 	entry: {
 		main: './public/assets/js/main.js',
 		create: './public/assets/js/create-form.js'
