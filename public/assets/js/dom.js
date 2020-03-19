@@ -1,6 +1,6 @@
 import Hammer from './hammer'
 
-const baseUrl = 'http://localhost:3002'
+const baseUrl = 'https://ourstamil.herokuapp.com'
 
 // flashcard elements
 const title = document.querySelector('.flashcard__title')
@@ -16,7 +16,6 @@ const prevBtn = document.querySelector('.prev-button')
 let count = 0
 
 async function loadFlashcards() {
-	const baseUrl = 'http://localhost:3002'
 	const res = await fetch(`${baseUrl}/flashcards`)
 
 	if (res.status === 200) return await res.json()
@@ -100,14 +99,14 @@ async function init() {
 
 	hammer.on('panleft panright pancancel panend', ev => {
 		if (ev.type === 'panleft') {
-			container.style.transform = `translate(-${ev.distance < 0 ? 0 : ev.distance / 5}px)`
+			contai.style.transform = `translate(-${ev.distance < 0 ? 0 : ev.distance / 5}px)`
 		}
 		if (ev.type === 'panright') {
-			container.style.transform = `translate(${ev.distance < 0 ? 0 : ev.distance / 5}px)`
+			contai.style.transform = `translate(${ev.distance < 0 ? 0 : ev.distance / 5}px)`
 		}
 
 		if (ev.type === 'panend') {
-			container.style.transform = `translate(0)`
+			contai.style.transform = `translate(0)`
 		}
 	})
 }

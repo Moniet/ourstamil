@@ -1,6 +1,6 @@
 const form = document.querySelector('#login')
 const password = document.querySelector('#password')
-const baseUrl = 'http://localhost:3002'
+const baseUrl = 'https://ourstamil.herokuapp.com'
 
 if (form) {
 	form.addEventListener('submit', async e => {
@@ -13,10 +13,9 @@ if (form) {
 			},
 			body: JSON.stringify({ password: password.value })
 		})
-
 		if (res.status === 200) {
 			alert('successfully loggedin')
-			return (window.location = 'http://localhost:3002/')
+			return (window.location = 'https://ourstamil.herokuapp.com/')
 		}
 
 		alert('wrong password')

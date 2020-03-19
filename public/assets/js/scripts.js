@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 	if (theme === 'dark') body.setAttribute('data-theme', 'dark')
 	themeButton.addEventListener('click', changeTheme)
 
-	const res = await fetch('http://localhost:3002/auth/loggedIn', {
+	const res = await fetch('https://ourstamil.herokuapp.com/auth/loggedIn', {
 		method: 'GET',
 		credentials: 'include'
 	})

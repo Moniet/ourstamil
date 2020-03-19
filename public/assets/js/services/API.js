@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:3002'
+const baseUrl = 'https://ourstamil.herokuapp.com'
 
 export async function postFlashcard(data) {
 	const options = {
