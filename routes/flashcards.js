@@ -7,6 +7,8 @@ const writeFileAsync = promisify(fs.writeFile)
 const jwt = require('jsonwebtoken')
 const PASSWORD = process.env.PASSWORD
 const SECRET = process.env.SECRET
+const Flashcard = require('../models/Flashcard')
+const Example = require('../models/Example')
 
 router.post('/', async (req, res) => {
 	const token = req.cookies.access_token
@@ -14,21 +16,30 @@ router.post('/', async (req, res) => {
 
 	if (!token || !decoded || PASSWORD !== decoded.password) return res.status(400).end()
 
-	const { word, definition } = req.body
+	const { value, definition, tags, difficulty, tamilText, examples } = req.body.data
 	const entry = req.body
 
 	try {
-		const data = await readFileAsync('./db.json')
-		const json = JSON.parse(data)
-		const newData = {
-			...entry.data,
-			createdAt: new Date()
+		const flashcard = new Flashcard({ value, definition, tags, tamilText, difficulty })
+		const exampleIds = []
+
+		for (let dataSet of examples) {
+			const example = new Example(Object.assign(dataSet, { flashcard: flashcard._id }))
+			flashcard.examples.push(example)
+			await example.save()
 		}
 
-		json.data.push(newData)
+		await flashcard.updateOne({ examples: exampleIds })
+		await flashcard.save()
 
-		const result = await writeFileAsync('./db.json', JSON.stringify(json))
-		res.json({ message: 'success', flashcards: newData })
+		const result = await Flashcard.find({ _id: flashcard._id })
+			.populate('examples')
+			.exec()
+
+		res.json({
+			message: 'success',
+			flashcards: result
+		})
 	} catch (err) {
 		console.log(err)
 	}
@@ -36,10 +47,10 @@ router.post('/', async (req, res) => {
 
 router.get('/', async (req, res) => {
 	try {
-		const data = await readFileAsync('./db.json')
-		const parsed = JSON.parse(data)
-		const newData = { data: parsed.data.reverse() }
-		const json = res.json(newData)
+		const data = await Flashcard.find({})
+			.populate('examples')
+			.exec()
+		const json = res.json({ data })
 	} catch (err) {
 		console.log(err)
 	}
