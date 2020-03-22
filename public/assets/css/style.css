@@ -194,7 +194,7 @@ details[open] summary:before {
 	transform: rotate(180deg);
 }
 
-.flashcard__difficulty {
+.chip {
 	background: var(--font-color);
 	color: var(--bg);
 	padding: 0 0.4rem;
