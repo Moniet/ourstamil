@@ -1,5 +1,3 @@
-const baseUrl = 'https://ourstamil.herokuapp.com'
-
 export async function postFlashcard(data) {
 	const options = {
 		method: 'POST',
@@ -11,7 +9,7 @@ export async function postFlashcard(data) {
 		body: JSON.stringify(data)
 	}
 
-	const res = await fetch(`${baseUrl}/flashcards`, options)
+	const res = await fetch(`/flashcards`, options)
 
 	if (res.status === 400) alert("Unauthorized Action. You're not logged in.")
 }
