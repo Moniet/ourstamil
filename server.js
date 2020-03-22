@@ -4,8 +4,11 @@ const cors = require('cors')
 const path = require('path')
 const cookieParser = require('cookie-parser')
 const port = 3002
+const database = require('./database')
 
 require('dotenv').config()
+
+database()
 
 // controllers
 const flashcards = require('./routes/flashcards')
@@ -16,7 +19,6 @@ app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs')
 app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use('/node_modules', express.static(path.join(__dirname, 'node_modules')))
-// app.use('/favicon.ico')
 
 // middleware
 app.use(express.json())
