@@ -19,10 +19,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 	if (theme === 'dark') body.setAttribute('data-theme', 'dark')
 	themeButton.addEventListener('click', changeTheme)
 
-	const res = await fetch('https://ourstamil.herokuapp.com/auth/loggedIn', {
+	const res = await fetch(`/auth/loggedIn`, {
 		method: 'GET',
 		credentials: 'include'
 	})
 
-	if (res.status === 200) document.querySelector('.create-link').style.display = 'block'
+	if (res.status === 200) document.querySelector('.create-link').style.display = 'flex'
 })
