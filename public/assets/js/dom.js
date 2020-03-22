@@ -1,13 +1,12 @@
 import Hammer from './hammer'
 
-const baseUrl = 'https://ourstamil.herokuapp.com'
-
 // flashcard elements
 const title = document.querySelector('.flashcard__title')
 const difficulty = document.querySelector('.flashcard__difficulty')
 const definition = document.querySelector('.details__definition')
 const examples = document.querySelector('.examples')
 const header = document.querySelector('#flashcard-header')
+const date = document.querySelector('.flashcard__date')
 
 // controls
 const nextBtn = document.querySelector('.next-button')
@@ -16,22 +15,25 @@ const prevBtn = document.querySelector('.prev-button')
 let count = 0
 
 async function loadFlashcards() {
-	const res = await fetch(`${baseUrl}/flashcards`)
+	const res = await fetch(`/flashcards`)
 
 	if (res.status === 200) return await res.json()
 	return null
 }
 
 function updateFlashcard(flashcards, index) {
-	if (!title) return null
-	console.log('updating')
-
 	const data = flashcards[index]
 
 	if (!!data) {
+		const time = new Date(data.created)
+		const month = time.getMonth()
+		const day = time.getDate()
 		title.textContent = data.value
 		difficulty.textContent = data.difficulty
 		definition.textContent = data.definition
+		date.textContent = `${day < 10 ? '0' + day : day}/${
+			month + 1 < 10 ? '0' + (month + 1) : month + 1
+		}/${time.getFullYear()}`
 
 		examples.textContent = ''
 		data.examples.forEach(example => {
@@ -63,18 +65,19 @@ function updateFlashcard(flashcards, index) {
 
 async function init() {
 	const flashcards = await loadFlashcards()
-	flashcards && updateFlashcard(flashcards.data, 0)
+
+	updateFlashcard(flashcards.data, 0)
 
 	title.addEventListener('click', () => {
 		document.querySelector('.flashcard__body').classList.toggle('hide')
 	})
-
 	nextBtn.addEventListener('click', () =>
 		updateFlashcard(flashcards.data, count + 1 < flashcards.data.length ? ++count : error())
 	)
-	prevBtn.addEventListener('click', () =>
-		updateFlashcard(flashcards.data, count - 1 >= 0 ? --count : error())
-	)
+	prevBtn &&
+		prevBtn.addEventListener('click', () =>
+			updateFlashcard(flashcards.data, count - 1 >= 0 ? --count : error())
+		)
 
 	function error(action) {
 		if (action === 'start') count = 0
@@ -100,16 +103,16 @@ async function init() {
 
 	tracker.on('panleft panright pancancel panend panup pandown', ev => {
 		if (ev.type === 'panleft') {
-			container.style.transform = `translate(-${ev.distance < 0 ? 0 : ev.distance / 5}px)`
+			header.style.transform = `translate(-${ev.distance < 0 ? 0 : ev.distance / 5}px)`
 		}
 		if (ev.type === 'panright') {
-			container.style.transform = `translate(${ev.distance < 0 ? 0 : ev.distance / 5}px)`
+			header.style.transform = `translate(${ev.distance < 0 ? 0 : ev.distance / 5}px)`
 		}
 
 		if (ev.type === 'panend') {
-			container.style.transform = `translate(0)`
+			header.style.transform = `translate(0)`
 		}
 	})
 }
 
-init()
+if (title) init()
