@@ -83,6 +83,7 @@ nav {
 	text-transform: uppercase;
 	font-weight: normal;
 	font-size: 1rem;
+	display: flex;
 }
 
 .navlist__item__link:hover {
