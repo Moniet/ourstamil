@@ -48,6 +48,7 @@ router.post('/', async (req, res) => {
 router.get('/', async (req, res) => {
 	try {
 		const data = await Flashcard.find({})
+			.sort({ created: -1 })
 			.populate('examples')
 			.exec()
 		const json = res.json({ data })
