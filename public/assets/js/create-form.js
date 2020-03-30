@@ -80,7 +80,17 @@ async function handleSubmit(e) {
 
 	await postFlashcard({ data })
 
-	const inputs = a
+	alert("successfully submitted!")
+
+	const inputs = document.querySelectorAll('input')
+
+	inputs.forEach(input => {
+		let name = input.name
+
+		if (name === 'difficulty') return input.value = 'beginner'
+		if (name === 'category') return input.value = 'word'
+		input.value = ''
+	})
 }
 
 document.addEventListener('DOMContentLoaded', () => {
