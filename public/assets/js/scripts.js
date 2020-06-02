@@ -24,5 +24,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 		credentials: 'include'
 	})
 
-	if (res.status === 200) document.querySelector('.create-link').style.display = 'flex'
+	if (res.status === 200) { 
+		document.querySelector('.create-link').style.display = 'flex'
+		document.querySelector('.login-link').style.display = 'none'
+	}
 })
