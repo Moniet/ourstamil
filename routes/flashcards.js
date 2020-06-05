@@ -36,12 +36,12 @@ router.post('/', async (req, res) => {
 			.populate('examples')
 			.exec()
 
-		res.json({
+		res.status(200).json({
 			message: 'success',
 			flashcards: result
 		})
 	} catch (err) {
-		console.log(err)
+		res.status(400).end()
 	}
 })
 

@@ -3,12 +3,12 @@ const path = require('path')
 module.exports = {
 	mode: 'production',
 	entry: {
-		main: './public/assets/js/main.js',
-		create: './public/assets/js/create-form.js'
+		main: './assets/js/main.js',
+		create: './assets/js/create-form.js'
 	},
 	output: {
 		filename: '[name].js',
-		path: path.resolve(__dirname, 'public/dist')
+		path: path.resolve(__dirname, 'public')
 	},
 	module: {
 		rules: [

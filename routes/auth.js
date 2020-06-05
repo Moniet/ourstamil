@@ -21,7 +21,7 @@ router.post('/', (req, res) => {
 router.get('/loggedIn', (req, res) => {
 	const token = req.cookies.access_token
 
-	if (!token) return res.status(400).json({ error: 'Unauthorized' })
+	if (!token) return res.status(401).json({ error: 'Unauthorized' })
 
 	const decoded = jwt.decode(token, SECRET)
 

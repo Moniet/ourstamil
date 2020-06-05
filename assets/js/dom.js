@@ -1,4 +1,6 @@
 import Hammer from './hammer'
+// API
+import { loadFlashcards } from './services/API'
 
 // flashcard elements
 const title = document.querySelector('.flashcard__title')
@@ -13,13 +15,6 @@ const nextBtn = document.querySelector('.next-button')
 const prevBtn = document.querySelector('.prev-button')
 
 let count = 0
-
-async function loadFlashcards() {
-	const res = await fetch(`/flashcards`)
-
-	if (res.status === 200) return await res.json()
-	return null
-}
 
 function updateFlashcard(flashcards, index) {
 	const data = flashcards[index]
