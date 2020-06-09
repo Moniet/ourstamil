@@ -11,7 +11,7 @@ export async function postFlashcard(data) {
 
 	const res = await fetch(`/flashcards`, options)
 	if (res.status === 401) return alert("Unauthorized Action. You're not logged in.")
-	if (res.status === 400) return alert("Woops! Could not create Flashcard,,p.")
+	if (res.status === 400) return alert("Woops! Could not create Flashcard. Somethings missing :O")
 	if (!res.ok) return alert("Server May be offline.")
 
 	alert("Yaay! Successfully created the tings!")

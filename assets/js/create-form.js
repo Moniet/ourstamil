@@ -27,9 +27,9 @@ customElements.define(
 			this.appendChild(temp)
 
 			const element = this.firstElementChild
-			element.setAttribute('data-theme', exampleCount)
+			element.setAttribute('data-index', exampleCount)
 			element.addEventListener('input', e => {
-				const index = element.dataset.theme
+				const index = element.dataset.index
 				const key = e.target.name
 				const value = e.target.value
 

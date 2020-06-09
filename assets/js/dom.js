@@ -43,10 +43,12 @@ function updateFlashcard(flashcards, index) {
 			tense.slot = 'tense'
 			tone.slot = 'tone'
 
-			title.textContent = example.example
-			translation.textContent = example.translation
-			tense.textContent = example.tense
-			tone.textContent = example.tone
+			title.textContent = example.example || 'default'
+			translation.textContent = example.translation || 'default'
+			tense.textContent = example.tense || 'default'
+			tone.textContent = example.tone || 'default'
+
+			container.setAttribute('data-id', example._id)
 
 			container.appendChild(title)
 			container.appendChild(translation)
